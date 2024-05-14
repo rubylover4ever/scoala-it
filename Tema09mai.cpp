@@ -1,5 +1,11 @@
 #include <iostream>
 
+inline void WaitEnter()
+{
+    std::cout << "--Apasati ENTER pentru a continua--";
+    while (std::cin.get() != '\n');
+}
+
 
 int main()
 {
@@ -14,9 +20,9 @@ int main()
     else
         std::cout << "Anul " << number << " nu este bisect. \n";
 
-    std::cout << "--Apasati ENTER pentru a continua--";
-    while (std::cin.get() != '\n');
-  
+    WaitEnter();
+    std::cin.get() != '\n';
+
     // tema 2.  
 
     int factorial;
@@ -34,4 +40,3 @@ int main()
     std::cout << "--Pentru a afisa raspunsul apasati ENTER--";
     while (std::cin.get() != '\n');
     std::cout << "raspunsunl este: "<< ForT <<"\n";
-
