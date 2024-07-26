@@ -88,11 +88,14 @@ int main()
     Shape* s = new Circle();
     r.draw();
     s->draw();
+    delete s;
 
     AbstractBase* a = new Concrete();
     a->pureFunction();
+    delete a;
 
     Printable* p = new Image();
     p->print();
+    delete p;
 
 }
