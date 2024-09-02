@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-//============================Implementarea stivei cu vector=======================================
+//============================Implementarea stivei CU vector=======================================
 class Stack
 {
 	std::vector<int> v;
@@ -52,6 +52,88 @@ class Stack
 		}
 	}
 
+};
+//==========================================Implementarea Stivei FARA vector==================================
+#define MAX 6
+class Stiva
+{
+	int arr[MAX];
+	int top;
+public:
+	Stiva()
+	{
+		int value;
+		for (int i = 0; i < MAX; ++i)
+		{
+			std::cout << "Please enter value at num: " << i << std::endl;
+			std::cin >> value;
+			arr[i] = value;
+		}
+		top = MAX-1;
+		
+	}
+
+	int size()
+	{
+		return sizeof(arr);
+	}
+
+	void push(int elem)
+	{
+		if (top < (MAX))
+		{
+			arr[++top] = elem;
+		}
+		else
+		{
+			std::cout << "full";
+		}
+	}
+	int pop()
+	{
+		if (top == -1)
+		{
+			std::cout << "gol";
+			return -1;
+		}
+		else
+		{
+			int temp = arr[top];
+			arr[top--] = 0;
+			return temp;
+		}
+	}
+	int top_n()
+	{
+		if (top == -1)
+		{
+			std::cout << "gol";
+			return -1;
+		}
+		else
+		{
+			return arr[top];
+		}
+	}
+	bool isEmpty()
+	{
+		return (top < 0);
+	}
+	bool isFull()
+	{
+		return (top >= (MAX - 1));
+	}
+	int at(int i)
+	{
+		return arr[i];
+	}
+	void afisare()
+	{
+		for (int o = 0; o <= top; ++o)
+		{
+			std::cout << arr[o] << std::endl;
+		}
+	}
 };
 
 //==========================================TEMA nr 1(Exercitiul 5)============================================ 
@@ -121,6 +203,34 @@ void afisare(std::vector<int> v)
 }
 
 //=================================Tema nr 2(EXercitiul 6)========================================
+bool palindrom(std::string v)
+{
+	int k = v.size() - 1;
+	for (int i = 0; i < v.size() / 2; ++i)
+	{
+		if(v[i] != (',', '.', '?', '!', ' ') )
+		{
+			if (tolower(v[i]) != tolower(v[k]))
+			{
+				return false;
+			}
+		}
+		--k;
+	}
+}
+
+// functia fara "tolower":
+// 
+// in tabela ASCII valorile noastre sunt: 
+// 65 ...  90 = A ... Z
+// 97 ... 122 = a ... z
+// 
+// dif dintre literele mari si cele mici este de:
+//   A - a  = +(-dif)
+//  65 - 97 = +(-32)
+// 
+// deci, daca vreau sa fac compararea intre 'A' si 'a' sa rezulte egal
+// trebuie sa verific daca diferenta intre ele este de +-32
 
 
 //================================MAIN===============================================
@@ -131,4 +241,14 @@ int main()
   sorter3point0(vec);
   afisare(vec);
   //rezultat tema nr 2
+ std::string str = "a L.upu.l a";
+if (palindrom(str))
+{
+	std::cout << "palindrom";
+}
+else 
+{
+	std::cout << "not palindrom";
+}
+
 }
